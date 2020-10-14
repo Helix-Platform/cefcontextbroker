@@ -29,7 +29,7 @@ services:
       - default
     ports:
       - "1026:1026"
-    command: -dbhost mongo-db -reqMutexPolicy all -reqPoolSize 0 -disableMetrics -logLevel WARN
+    command: -dbhost mongo-db -disableMetrics -logLevel ERROR
     healthcheck:
       test: curl --fail -s http://orion:1026/version || exit 1
 
@@ -45,7 +45,7 @@ services:
       - "27017:27017" 
     networks:
       - default
-    command: --bind_ip_all --smallfiles
+    command: --bind_ip_all
     volumes:
       - mongo-db:/data
     healthcheck:
