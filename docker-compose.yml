@@ -29,7 +29,7 @@ services:
       - default
     ports:
       - "1026:1026"
-    command: -dbhost mongo-db -reqMutexPolicy none -disableMetrics -logLevel WARN
+    command: -dbhost mongo-db -reqMutexPolicy all -reqPoolSize 0 -disableMetrics -logLevel WARN
     healthcheck:
       test: curl --fail -s http://orion:1026/version || exit 1
 
